@@ -6,17 +6,17 @@ const Validator = require('is_js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
-const secret_key = 'hackedPassword123';
+// const secret_key = 'hackedPassword123';
 const saltRounds = 10;
 
 
 //connection pool
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'localhost',
-  user: 'root',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
   password: '',
-  database: 'testcase01'
+  database: process.env.DB_NAME
 });
 
 // function validator(data) {
@@ -128,7 +128,7 @@ exports.CheckAdminLogin = (req, res, next) => {
         if (status){
           // console.log(status.userID);
           //creating token using jwt;
-          const token = jwt.sign({UserID: status.admin_id}, secret_key);
+          const token = jwt.sign({UserID: status.admin_id}, process.env.JWT_KEY);
         // res.cookie('jwt', token);
         req.session.jwt = token;
         req.session.save();

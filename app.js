@@ -7,7 +7,7 @@ const mysql = require('mysql');
 const hbs = require('hbs');
 const session = require('express-session');
 var flash = require('express-flash');
-
+require('dotenv').config()
 //requiring routes files....
 let indexRouter = require('./routes/index');
 
@@ -25,10 +25,10 @@ app.set('view engine', 'hbs');
 //connection pool
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'localhost',
-  user: 'root',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
   password: '',
-  database: 'testcase01'
+  database: process.env.DB_NAME
 });
 //connect to DB.....
 pool.getConnection((error, connection) => {

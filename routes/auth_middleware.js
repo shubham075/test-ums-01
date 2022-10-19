@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret_key = 'hackedPassword123';
+// const secret_key = 'hackedPassword123';
 
 
 exports.verifyToken = (req, res, next) => {
@@ -13,7 +13,7 @@ exports.verifyToken = (req, res, next) => {
 	else {
 		// let token = req.headers["authorization"].split(' ')[1];
         let jwtToken = req.session.jwt;
-		const {admin_id} = jwt.verify(jwtToken, secret_key);
+		const {admin_id} = jwt.verify(jwtToken, process.env.JWT_KEY);
         req.loggedInUser = admin_id; 
         next();  
 	}
