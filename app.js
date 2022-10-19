@@ -31,10 +31,10 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME
 });
 //connect to DB.....
-pool.getConnection((error, connection) => {
-  if (error) throw error;
-  console.log('Connection ID: ' + connection.threadId);
-});
+// pool.getConnection((error, connection) => {
+//   if (error) throw error;
+//   console.log('Connection ID: ' + connection.threadId);
+// });
 
 
 app.use(logger('dev'));
