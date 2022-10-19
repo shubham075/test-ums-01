@@ -1,0 +1,72 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add User</li>
+  </ol>
+</nav>
+
+{{!-- {{#if alert}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}} --}}
+{{!-- {{#if message}}
+<div class="alert alert-warning alert-dismissible fade show alert-{{message.type}}" role="alert">
+ <strong>{{message.intro}}</strong> {{message.message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}} --}}
+
+{{#if messages.success}}
+<p style="color: red; margin: 10px ; padding: 12px; text-align: center;" class="alert alert-success">{{messages.success}}</p>
+{{/if}}
+
+
+<form class="row g-3 mt-3" action="/adduser" method="post">
+  <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="first_name" placeholder="First Name">
+            <label for="floatingInput">First Name</label>
+            {{#if err.first_name}}
+          <p style="color: red; margin: 0; padding: 0">{{err.first_name}}</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="last_name" placeholder="Last Name">
+            <label for="floatingInput">Last Name</label>
+            {{#if err.last_name}}
+          <p style="color: red; margin: 0; padding: 0">{{err.last_name}}</p>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="contact" placeholder="Contact Number">
+            <label for="floatingInput">Contact Number</label>
+            {{#if err.contact}}
+          <p style="color: red; margin: 0; padding: 0">{{err.contact}}</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="Email Id">
+            <label for="floatingInput">Email Id</label>
+            {{#if err.email}}
+          <p style="color: red; margin: 0; padding: 0">{{err.email}}</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Add User</button>
+    </div>
+
+</form>

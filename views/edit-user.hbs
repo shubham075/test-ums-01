@@ -1,0 +1,58 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">edit user</li>
+  </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{!-- {{#if message}}
+<div class="alert alert-warning alert-dismissible fade show alert-{{message.type}}" role="alert">
+ <strong>{{message.intro}}</strong> {{message.message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}} --}}
+
+{{#each results}}
+<form class="row g-3 mt-3" action="/edituser/{{this.id}}" method="post">
+  <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" value="{{this.first_name}}" class="form-control" id="floatingInput" name="first_name" placeholder="First Name">
+            <label for="floatingInput">First Name</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" value="{{this.last_name}}" class="form-control" id="floatingInput" name="last_name" placeholder="Last Name">
+            <label for="floatingInput">Last Name</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" value="{{this.contact}}" class="form-control" id="floatingInput" name="contact" placeholder="Contact Number">
+            <label for="floatingInput">Contact Number</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="email" value="{{this.email}}" class="form-control" id="floatingInput" name="email" placeholder="Email Id">
+            <label for="floatingInput">Email Id</label>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" >Update User</button>
+    </div>
+
+</form>
+{{/each}}

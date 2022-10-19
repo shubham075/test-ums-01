@@ -1,0 +1,86 @@
+<style>
+.section{
+	width: 100%;
+	min-height: 100vh;
+	background-color: #ddd;
+}
+.container{
+	width: 80%;
+	display: block;
+	margin:auto;
+	padding-top: 100px;
+}
+.content-section{
+	float: left;
+	width: 55%;
+}
+.image-section{
+	float: right;
+	width: 40%;
+}
+.image-section img{
+	width: 100%;
+	height: auto;
+}
+.content-section .title{
+	//text-transform: uppercase;
+	font-size: 28px;
+}
+.content-section .content h3{
+	margin-top: 20px;
+	color:#5d5d5d;
+	font-size: 21px;
+}
+.content-section .content p{
+	margin-top: 10px;
+	font-family: sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+}
+.content-section .content .button{
+	margin-top: 30px;
+}
+.content-section .content .button a{
+	background-color: #3d3d3d;
+	padding:12px 40px;
+	text-decoration: none;
+	color:#fff;
+	font-size: 25px;
+	letter-spacing: 1.5px;
+}
+.content-section .content .button a:hover{
+	background-color: #a52a2a;
+	color:#fff;
+}
+
+</style>
+
+<div class="section">
+	<div class="container">
+		<div class="content-section">
+			<div class="title">
+				{{#each results}}
+				<h1>About {{this.first_name}} {{this.last_name}}</h1>
+				
+			</div>
+			<div class="content pt-5">
+				<h3>User work performance</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.</p>
+				<h4>contact details:</h4>
+				<p>Email id:{{#if this.email}} {{this.email}} {{else}} Unknown {{/if}}</p>
+				<p>Contact number:{{#if this.contact}} {{this.contact}} {{else}} Unknown {{/if}}</p>
+				<div class="button">
+					<a href="/">Back</a>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+		<div class="image-section">
+			<img src="images/one.jpg" alt="user Image">
+		</div>
+	</div>
+</div>
+

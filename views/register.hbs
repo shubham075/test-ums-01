@@ -1,0 +1,94 @@
+{{#if alert}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}
+
+
+<div class="row">
+    <div class="col-6">
+        <h1>User Registration page</h1>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <a href="/adminlogin" type="button" class="btn btn-primary align-self-center">back to login page</a>
+    </div>
+</div>
+
+
+<form class="row g-3 needs-validation" novalidate method="post" action="/register">
+    <div class="col-md-6 position-relative">
+        <label for="validationServer01" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="validationServer01" value="" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a Name.
+        </div>
+    </div>
+
+    <div class="col-md-6 position-relative">
+        <label for="validationServer02" class="form-label">Email ID</label>
+        <input type="email" class="form-control" name="email" id="validationServer02" value="" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a your Email Id.
+        </div>
+    </div>
+
+    <div class="col-md-6 position-relative">
+        <label for="validationServer03" class="form-label">Contact Number</label>
+        <input type="phone" class="form-control" name="contact" id="validationServer03" required>
+        <div class="invalid-feedback">
+            Please provide a contact number.
+        </div>
+    </div>
+
+    <div class="col-md-6 position-relative">
+        <label for="validationServer06" class="form-label">Address</label>
+        <input type="address" class="form-control" name="address" id="validationServer06" required>
+        <div class="invalid-feedback">
+            Please provide a Address.
+        </div>
+    </div>
+
+    <div class="col-md-6 position-relative">
+        <label for="validationServer04" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="validationServer04" required>
+        <div class="invalid-feedback">
+            Please provide a Password.
+        </div>
+    </div>
+
+    <div class="col-md-6 position-relative">
+        <label for="validationServer05" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="passwordConfirm" id="validationServer05" required>
+        {{!-- {{# if }} --}}
+        <div class="invalid-feedback">
+            Please confirm your Password.
+        </div>
+        {{!-- {{/if}} --}}
+    </div>
+
+    <div class="col-12 mt-4">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">
+                Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+                You must agree before submitting.
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 mt-5">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+    </div>
+</form>
