@@ -24,7 +24,7 @@
 {{/if}} --}}
 
 {{#each results}}
-<form class="row g-3 mt-3" action="/edituser/{{this.id}}" method="post">
+<form class="row g-3 mt-3" action="/admin/edituser/{{this.id}}" method="post">
   <div class="col-6">
         <div class="form-floating mb-3">
             <input type="text" value="{{this.first_name}}" class="form-control" id="floatingInput" name="first_name" placeholder="First Name">

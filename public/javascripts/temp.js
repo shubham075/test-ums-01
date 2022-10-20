@@ -14,7 +14,7 @@ function delUser(val) {
         swal("Your records has been deleted!", {
           icon: "success",
         })
-        location.href = `/deleteuser/${val}`;
+        location.href = `/admin/deleteuser/${val}`;
       } else {
         swal("Your records is safe!");
       }

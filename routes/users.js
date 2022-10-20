@@ -120,25 +120,24 @@ exports.CheckAdminLogin = (req, res, next) => {
     if (error) throw error;
     connection.query(`SELECT * FROM admin`, (error, results) => {
       connection.release();
-      if (!error) { 
+      if (!error) {
         const status = results.find((ele) => {
-          if (ele.userID == user && ele.password == lpassword){
+          if (ele.userID == user && ele.password == lpassword) {
             return true;
-          } 
+          }
         });
-        if (status){
+        if (status) {
           // console.log(status.userID);
           //creating token using jwt;
-          const token = jwt.sign({UserID: status.admin_id}, process.env.JWT_KEY);
-        // res.cookie('jwt', token);
-        req.session.jwt = token;
-        req.session.save();
+          const token = jwt.sign({ UserID: status.admin_id }, process.env.JWT_KEY);
+          req.session.jwt = token;
+          req.session.save();
           pool.getConnection((error, connection) => {
             if (error) throw error;
             connection.query("SELECT * FROM userinformation", (error, results) => {
               connection.release();
-              if (!error) {   
-                req.header('Authorization', 'Bearer '+ token);          
+              if (!error) {
+                // req.header('Authorization', 'Bearer ' + token);
                 res.render('index', { results, alert: 'Succesfully login!' });
               }
               else {
@@ -147,7 +146,7 @@ exports.CheckAdminLogin = (req, res, next) => {
             });
           });
         }
-        else{
+        else {
           res.render('login', { alert: "Invalid credentials!" });
         }
       }
@@ -156,7 +155,7 @@ exports.CheckAdminLogin = (req, res, next) => {
       }
     });
   });
-  
+
 
 }
 
@@ -166,9 +165,6 @@ exports.viewUser = (req, res) => {
     connection.query("SELECT * FROM userinformation WHERE id = ?", [req.params.id], (error, results) => {
       connection.release();
       if (!error) {
-        // console.log(results);
-        // results = JSON.stringify(results);
-        // let user = results[0].first_name +' '+ results[0].last_name;
         res.render('aboutPage', { results });
       }
       else {
@@ -227,7 +223,7 @@ exports.create = (req, res) => {
         connection.release();
         if (!error) {
           // req.session.message = {input:"sucess", intro:"Record created", message:"New record is created!"}
-          req.flash('success', 'User Created successfully!');
+          req.flash('success', 'User added successfully!');
           res.redirect('addUser');
         }
         else {
@@ -244,8 +240,6 @@ exports.edit = (req, res) => {
   //connect to DB.....
   pool.getConnection((error, connection) => {
     if (error) throw error;
-    console.log('Connection ID: ' + connection.threadId);
-    //use the connection
     connection.query("SELECT * FROM userinformation WHERE id = ?", [req.params.id], (error, results) => {
       connection.release();
       if (!error) {
@@ -368,7 +362,7 @@ exports.delete = (req, res) => {
     connection.query("DELETE FROM userinformation WHERE id = ?", [req.params.id], (error, results) => {
       connection.release();
       if (!error) {
-        res.redirect("/adminlogin");
+        res.redirect("/admin");
       }
       else {
         console.log(error);
